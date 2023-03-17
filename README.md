@@ -7,3 +7,7 @@
 - [x] Build a Decoder with 2 simple FC layers
 - [x] Build a Optimizer for training (scheduler)
 - [x] Build a loss function for SimpleAutoEncoder
+
+```
+python3 src/train.py
+```
