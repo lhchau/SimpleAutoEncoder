@@ -5,14 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 
-from src.autoencoder import *
+from autoencoder import *
 from decoder import *
 from encoder import *
 from loading_bar import *
-from src.data.dataloader_mnist import *
-from src.data.download_mnist import *
-from src.alexnet import * 
-from src.data.dataloader_cifar10 import *
+from data.dataloader_mnist import *
+from data.download_mnist import *
+from alexnet import * 
+from data.dataloader_cifar10 import *
 
 #  use gpu if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
