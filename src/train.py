@@ -5,13 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 
-from abstractAE import *
+from src.autoencoder import *
 from decoder import *
 from encoder import *
 from loading_bar import *
-from data.DataLoaderMNIST import *
-from data.downloadMNIST import *
-from AlexNet import * 
+from src.data.dataloader_mnist import *
+from src.data.download_mnist import *
+from src.alexnet import * 
+from src.data.dataloader_cifar10 import *
 
 #  use gpu if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -31,11 +32,19 @@ criterion = nn.BCELoss(reduction='mean')
 
 loading_bar = LoadingBar(length=20)
 
-# Load dataset
-train_images, train_labels, test_images, test_labels = download_mnist(url_root, file_dict)
+# Load MNIST dataset
+# train_images, train_labels, test_images, test_labels = download_mnist(url_root, file_dict)
 
-train_dataset = MNISTCustomDataset(train_images, train_labels,transform=data_transform)
-train_dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+# train_dataset = MNISTCustomDataset(train_images, train_labels,transform=data_transform)
+# train_dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+
+# Load CIFAR10 dataset
+# CIFAR10 dataset 
+train_dataloader, valid_dataloader = get_train_valid_loader(data_dir = './data',                                      batch_size = 64,
+                       augment = False,                             		     random_seed = 1)
+
+test_dataloader = get_test_loader(data_dir = './data',
+                              batch_size = 64)
 
 # Training data
 num_epochs = 2
