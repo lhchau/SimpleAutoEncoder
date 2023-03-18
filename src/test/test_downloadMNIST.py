@@ -1,4 +1,4 @@
-from ..data.downloadMNIST import *
+from ..data.download_mnist import *
 
 dataset = download_mnist(url_root,file_dict)
 train_images, train_labels, test_images, test_labels = download_mnist(url_root, file_dict)

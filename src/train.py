@@ -47,14 +47,14 @@ test_dataloader = get_test_loader(data_dir = './data',
                               batch_size = 64)
 
 # Training data
-num_epochs = 2
+num_epochs = 50
 len_dataset = len(train_dataloader)
 
 model.train()
 for epoch in range(num_epochs): 
-    for idx, B in enumerate(train_dataloader):
+    for idx, batch_list in enumerate(train_dataloader):
         # load data to the actice device
-        inputs, targets = (b.to(device) for b in B)
+        inputs, targets = (b.to(device) for b in batch_list)
 
         # compute reconstruction data 
         recon = model(inputs)
@@ -75,4 +75,6 @@ for epoch in range(num_epochs):
             end="",
             flush=True,
         )
-        
+
+X_test, _ = next(iter(test_dataloader))
+model.show_reconstructions(X_test[:20], n_cols=5)
