@@ -28,7 +28,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
 # mean-squared error loss or Binary Cross Entropy loss 
 # criterion = nn.MSELoss(reduction='mean')
-criterion = nn.BCELoss(reduction='mean')
+criterion = nn.BCEWithLogitsLoss(reduction='mean')
 
 loading_bar = LoadingBar(length=20)
 
@@ -40,11 +40,13 @@ loading_bar = LoadingBar(length=20)
 
 # Load CIFAR10 dataset
 # CIFAR10 dataset 
-train_dataloader, valid_dataloader = get_train_valid_loader(data_dir = './data',                                      batch_size = 64,
-                       augment = False,                             		     random_seed = 1)
+train_dataloader, valid_dataloader = get_train_valid_loader(data_dir = './data', 
+                                                            batch_size = 64, 
+                                                            augment = False,
+                                                            random_seed = 1)
 
 test_dataloader = get_test_loader(data_dir = './data',
-                              batch_size = 64)
+                                  batch_size = 64)
 
 # Training data
 num_epochs = 50
