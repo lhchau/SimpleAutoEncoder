@@ -28,6 +28,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
 # mean-squared error loss or Binary Cross Entropy loss 
 # criterion = nn.MSELoss(reduction='mean')
+# criterion = nn.BCELoss(reduction='mean')
 criterion = nn.BCEWithLogitsLoss(reduction='mean')
 
 loading_bar = LoadingBar(length=20)
