@@ -1,4 +1,4 @@
-## This is a simple implementation for AutoEncoder
+## A simple implementation for AutoEncoder using AlexNet for Encoder
 
 ### Task :
 - [x] Build a **abstract class** of AutoEncoder
