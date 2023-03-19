@@ -50,7 +50,7 @@ test_dataloader = get_test_loader(data_dir = './data',
                                   batch_size = 64)
 
 # Training data
-num_epochs = 50
+num_epochs = 10
 len_dataset = len(train_dataloader)
 
 model.train()
